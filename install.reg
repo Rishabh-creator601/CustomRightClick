@@ -1,0 +1,33 @@
+Windows Registry Editor Version 5.00
+
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\Programming]
+"MUIVerb"="Programming"
+"SubCommands"="py;open_web;you_down"
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\py]
+@="New Python File"
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\py\command]
+@="C:\\logs\\Codes\\CustomRightClick\\scripts\\py.bat"
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\open_web]
+@="Open Web"
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\open_web\command]
+@="C:\\logs\\Codes\\CustomRightClick\\open_web\\dist\\open_web.exe"
+
+
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\you_down]
+@="Download YouTube Video"
+
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\you_down\command]
+@="C:\\logs\\Codes\\CustomRightClick\\you_down\\dist\\you_down.exe"
