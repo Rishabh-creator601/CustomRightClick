@@ -1,31 +1,30 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.uic import loadUi
+from PyQt5 import QtGui
 from enlarged_windows import EnlargedWindow
-import sys ,os,pyperclip,time
+import sys ,os,pyperclip
 from files_tools import show_files,path_scripts,read_file,write_file
-
-os.chdir(r"C:\codes\GUIs") 
-
+from dotenv import load_dotenv
 
 
-
+load_dotenv(os.path.join("C:\Program Files\ScriptX",".env"))
 
 
 
+os.chdir(os.getcwd()) 
 
 
-
-
-
+path_scripts = os.getenv("path_scripts")
 
 class Main(QMainWindow):
     def __init__(self):
         super(Main,self).__init__()
-        loadUi("Scripts.ui",self)
+        loadUi(os.path.join(os.getenv("assets_path"),"Scripts.ui"),self)
         
         ## DEFAULT SETTINGS 
         self.setWindowTitle("--Scripts")
+        self.setWindowIcon(QtGui.QIcon(os.path.join(os.getenv("assets_path"),"logo.jpg")))
         self.content.setAcceptRichText(False)
         self.content.setFontFamily("sans-serif")
         self.tabs.setCurrentIndex(0)
@@ -35,7 +34,7 @@ class Main(QMainWindow):
         
         ## TAB 1 : FILES 
         self.filesList.addItems(show_files())
-        self.filesHeader.setText(f"FILE SOURCE : {path_scripts}")
+        self.filesHeader.setText(f"FILE SOURCE : {os.getenv('path_scripts')}")
         self.showInfo(len(show_files()))
         self.filesList.itemSelectionChanged.connect(self.render_file)
         self.itemsCheck.stateChanged.connect(self.show_items)
@@ -104,6 +103,7 @@ class Main(QMainWindow):
             QMessageBox.information(self ,"Info","Either Filename or content is empty")
     def show_data(self):
         self.enlarged_view.data.setFontPointSize(10.0)
+        self.enlarged_view.data.setReadOnly(True)
         self.enlarged_view.data.setText(self.content.toPlainText())
         self.enlarged_view.show()
     
@@ -113,18 +113,6 @@ class Main(QMainWindow):
         
         
     
-
-            
-        
-            
-        
-        
-        
-        
-        
-        
-        
-        
         
         
 app = QApplication(sys.argv)

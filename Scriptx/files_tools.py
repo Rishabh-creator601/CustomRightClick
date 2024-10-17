@@ -1,7 +1,14 @@
 import os,json 
+from dotenv import load_dotenv
+
+load_dotenv(os.path.join("C:\Program Files\ScriptX",".env"))
 
 
-path_scripts = "C:\depository\materials"
+
+
+
+path_scripts = os.getenv("path_scripts")
+assets_path = os.getenv("assets_path")
 
 
 def show_files(exts =[".txt"],all =False):
@@ -35,3 +42,14 @@ def write_file(file_path,data):
         f.write(data)
     f.close()
     
+    
+def write_json(file_name,data):
+    with open(file_name,"w") as f:
+        f.write(str(json.dumps(data,indent=4)))
+
+
+def load_json(file_name):
+    data = json.load(open(file_name,"r"))
+    return data
+    
+
